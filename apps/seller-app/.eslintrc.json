@@ -1,0 +1,12 @@
+{
+  "extends": [
+    "../../.eslintrc.json",
+    "plugin:react/recommended"
+  ],
+  "plugins": [
+    "react"
+  ],
+  "rules": {
+    "react/react-in-jsx-scope": "off"
+  }
+}
