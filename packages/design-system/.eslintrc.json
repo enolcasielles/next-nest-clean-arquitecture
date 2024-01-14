@@ -1,0 +1,14 @@
+{
+  "extends": [
+    "../../.eslintrc.json",
+    "plugin:react/recommended"
+  ],
+  "plugins": [
+    "react"
+  ],
+  "ignorePatterns": [
+    "tailwind.config.js",
+    "vite.config.ts"
+  ], 
+  "rules": {}
+}
