@@ -11,10 +11,13 @@
     "dist"
   ],
   "scripts": {
-    "dev": "vite",
+    "dev": "nodemon",
+    "vite": "vite",
     "build": "tsc && vite build && npm run build:styles",
     "build:styles": "postcss ./src/index.css -o ./dist/style.css",
-    "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0"
+    "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
   },
   "peerDependencies": {
     "react": "^18.2.0",
@@ -29,14 +32,27 @@
     "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
+    "@storybook/addon-essentials": "^7.6.8",
+    "@storybook/addon-interactions": "^7.6.8",
+    "@storybook/addon-links": "^7.6.8",
+    "@storybook/addon-onboarding": "^1.0.10",
+    "@storybook/blocks": "^7.6.8",
+    "@storybook/react": "^7.6.8",
+    "@storybook/react-vite": "^7.6.8",
+    "@storybook/test": "^7.6.8",
     "@types/react": "^18.2.43",
     "@types/react-dom": "^18.2.17",
     "@vitejs/plugin-react": "^4.2.1",
     "autoprefixer": "^10.0.1",
     "eslint-plugin-react": "^7.33.2",
+    "eslint-plugin-storybook": "^0.6.15",
+    "nodemon": "^3.0.3",
     "postcss": "^8",
     "postcss-cli": "^11.0.0",
     "prop-types": "^15.8.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "storybook": "^7.6.8",
     "tailwindcss": "^3.3.0",
     "vite": "^5.0.11",
     "vite-plugin-dts": "^3.7.0"
