@@ -1,0 +1,18 @@
+{
+  "name": "application",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc -p tsconfig.json",
+    "dev": "nodemon"
+  },
+  "dependencies": {
+    "@marketplace/domain": "workspace:^",
+    "zod": "^3.22.4"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

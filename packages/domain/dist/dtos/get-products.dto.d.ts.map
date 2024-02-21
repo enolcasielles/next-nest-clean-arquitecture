@@ -1,0 +1,1 @@
+{"version":3,"file":"get-products.dto.d.ts","sourceRoot":"","sources":["../../src/dtos/get-products.dto.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,KAAK,eAAe,EAAE,MAAM,qBAAqB,CAAA;AAC1D,OAAO,EAAE,KAAK,eAAe,EAAE,MAAM,qBAAqB,CAAA;AAE1D,MAAM,WAAW,cAAe,SAAQ,eAAe;IACrD,WAAW,CAAC,EAAE,MAAM,CAAA;IACpB,QAAQ,CAAC,EAAE,eAAe,CAAA;CAC3B"}

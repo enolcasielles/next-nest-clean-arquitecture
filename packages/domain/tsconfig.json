@@ -1,0 +1,22 @@
+{
+  "compilerOptions": {
+
+    "module": "ESNext",
+    "target": "ES2015",
+    "outDir": "./dist",
+    "incremental": true,
+    "allowSyntheticDefaultImports": true,
+    "isolatedModules": true,
+    
+    "declaration": true,
+    "declarationMap": true,
+    "sourceMap": true,
+    "removeComments": true,
+    
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noFallthroughCasesInSwitch": true,
+
+  }
+}
