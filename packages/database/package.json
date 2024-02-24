@@ -1,0 +1,30 @@
+{
+  "name": "database",
+  "version": "1.0.0",
+  "description": "",
+  "type": "module",
+  "main": "dist/index.js",
+  "module": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc -p tsconfig.json",
+    "dev": "nodemon",
+    "db:generate": "drizzle-kit generate:pg",
+    "db:migrate": "node dist/migrations.js",
+    "db:seed": "tsc --noEmit && node --loader ts-node/esm src/seed.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@marketplace/domain": "workspace:^",
+    "@neondatabase/serverless": "^0.8.1",
+    "drizzle-orm": "^0.29.3",
+    "postgres": "^3.4.3",
+    "ts-node": "^10.9.2"
+  },
+  "devDependencies": {
+    "drizzle-kit": "^0.20.14"
+  }
+}
