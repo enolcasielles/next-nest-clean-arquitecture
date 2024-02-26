@@ -1,4 +1,4 @@
-import { type IUsersRepository, type UserEntity } from '@marketplace/domain'
+import { type IUsersRepository, type UserEntity } from '@domain'
 import db from '../db'
 
 export class UsersRepository implements IUsersRepository {

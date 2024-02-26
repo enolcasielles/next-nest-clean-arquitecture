@@ -1,8 +1,16 @@
 import Image from 'next/image'
-import { type ReactNode } from 'react'
 import { Button } from 'design-system'
+import { CreateProductUseCase } from '@application'
+import { DI } from '@/di'
 
-export default function Home (): ReactNode {
+export default async function Home (): Promise<any> {
+  const usecase = new CreateProductUseCase()
+  await usecase.execute({
+    productsRepository: DI.productsRepository
+  }, {
+    userId: '123',
+    product: null
+  })
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
       <div className="z-10 max-w-5xl w-full items-center justify-between font-mono text-sm lg:flex">

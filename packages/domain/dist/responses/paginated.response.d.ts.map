@@ -1,1 +1,0 @@
-{"version":3,"file":"paginated.response.d.ts","sourceRoot":"","sources":["../../src/responses/paginated.response.ts"],"names":[],"mappings":"AAAA,MAAM,WAAW,iBAAiB,CAAC,CAAC;IAClC,KAAK,EAAE,CAAC,EAAE,CAAA;IACV,SAAS,EAAE,MAAM,CAAA;IACjB,UAAU,EAAE,MAAM,CAAA;IAClB,UAAU,EAAE,MAAM,CAAA;IAClB,WAAW,EAAE,MAAM,CAAA;CACpB"}

@@ -1,24 +1,9 @@
 {
+  "extends": "../../tsconfig.json",
   "compilerOptions": {
-
-    "module": "ESNext",
-    "target": "ES2015",
-    "outDir": "./dist",
-    "incremental": true,
-    "moduleResolution": "bundler",
-    "allowSyntheticDefaultImports": true,
-    "isolatedModules": true,
-    
-    "declaration": true,
-    "declarationMap": true,
-    "sourceMap": true,
-    "removeComments": true,
-    
-    "strict": true,
-    "noUnusedLocals": true,
-    "noUnusedParameters": true,
-    "noFallthroughCasesInSwitch": true,
-    "strictNullChecks": false
-
+    "lib": ["ES2020"],
+    "paths": {
+      "@domain": ["../domain"]
+    }
   }
 }

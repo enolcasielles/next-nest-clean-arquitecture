@@ -1,1 +1,0 @@
-{"version":3,"file":"create-product.request.d.ts","sourceRoot":"","sources":["../../src/requests/create-product.request.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,KAAK,eAAe,EAAE,MAAM,4BAA4B,CAAA;AAEjE,MAAM,WAAW,oBAAoB;IACnC,KAAK,EAAE,MAAM,CAAA;IACb,KAAK,EAAE,MAAM,CAAA;IACb,WAAW,EAAE,MAAM,CAAA;IACnB,QAAQ,EAAE,eAAe,CAAA;CAC1B"}

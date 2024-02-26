@@ -1,1 +1,0 @@
-{"version":3,"file":"create-product.dto.d.ts","sourceRoot":"","sources":["../../src/dtos/create-product.dto.ts"],"names":[],"mappings":"AAAA,OAAO,EAAE,KAAK,eAAe,EAAE,MAAM,qBAAqB,CAAA;AAE1D,MAAM,WAAW,gBAAgB;IAC/B,KAAK,EAAE,MAAM,CAAA;IACb,KAAK,EAAE,MAAM,CAAA;IACb,WAAW,EAAE,MAAM,CAAA;IACnB,QAAQ,EAAE,eAAe,CAAA;CAC1B"}
