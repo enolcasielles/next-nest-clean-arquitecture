@@ -1,6 +1,6 @@
-import { ProductsRepository, UsersRepository } from '@database'
+import { ProductsRepository, UsersRepository } from "@database";
 
 export const DI = {
   usersRepository: new UsersRepository(),
-  productsRepository: new ProductsRepository()
-}
+  productsRepository: new ProductsRepository(),
+};
