@@ -5,20 +5,16 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "db:generate": "drizzle-kit generate:pg",
-    "db:migrate": "node dist/migrations.js",
-    "db:seed": "tsc --noEmit && node --loader ts-node/esm src/seed.ts"
+    "dev": "ts-node src/db.ts"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@neondatabase/serverless": "^0.8.1",
-    "drizzle-orm": "^0.29.3",
-    "postgres": "^3.4.3",
+    "@prisma/client": "5.10.2",
     "ts-node": "^10.9.2"
   },
   "devDependencies": {
-    "drizzle-kit": "^0.20.14"
+    "prisma": "^5.10.2"
   }
 }

@@ -1,17 +1,17 @@
-import { type BaseEntity } from './base.entity'
+import { type BaseEntity } from "./base.entity";
 
 export enum ProductCategory {
-  Clothing = 'clothing',
-  Food = 'food',
-  Electronics = 'electronics',
-  Books = 'books',
-  Other = 'other'
+  CLOTHING = "CLOTHING",
+  FOOD = "FOOD",
+  ELECTRONICS = "ELECTRONICS",
+  BOOKS = "BOOKS",
+  OTHER = "OTHER",
 }
 
 export interface ProductEntity extends BaseEntity {
-  userId: string
-  title: string
-  price: number
-  description: string
-  category: ProductCategory
+  userId: string;
+  title: string;
+  price: number;
+  description: string;
+  category: ProductCategory;
 }

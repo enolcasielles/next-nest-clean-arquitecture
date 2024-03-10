@@ -1,4 +1,4 @@
-export interface GetPaginatedDto {
-  page?: number
-  pageSize?: number
+export interface GetPaginatedRequest {
+  page?: number;
+  pageSize?: number;
 }

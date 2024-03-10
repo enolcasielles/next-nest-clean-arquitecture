@@ -1,7 +1,6 @@
-import { type ProductCategory } from '../entities/product.entity'
-import { type GetPaginatedDto } from './get-paginated.request'
+import { type GetPaginatedRequest } from "./get-paginated.request";
 
-export interface GetProductsRequest extends GetPaginatedDto {
-  titleSearch?: string
-  category?: ProductCategory
+export interface GetProductsRequest extends GetPaginatedRequest {
+  titleSearch?: string;
+  category?: string;
 }
