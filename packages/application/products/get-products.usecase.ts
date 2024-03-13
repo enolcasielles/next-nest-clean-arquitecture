@@ -27,9 +27,13 @@ export class GetProductsUseCase
     request: Request,
   ): Promise<Either<CustomError, PaginatedResponse<ProductEntity>>> {
     try {
-      const products = await context.productsRepository.get(request.query);
+      const products = await context.productsRepository.get(
+        request.userId,
+        request.query,
+      );
       return makeRight(products);
     } catch (error) {
+      console.log("error", error);
       if (error instanceof CustomError) {
         return makeLeft(error);
       }

@@ -3,7 +3,6 @@ import { Inter } from "next/font/google";
 import { type ReactNode } from "react";
 
 import "./globals.css";
-import SideBar from "@/components/layout/side-bar";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -19,9 +18,7 @@ export default function RootLayout({
 }): ReactNode {
   return (
     <html lang="en">
-      <body className={inter.className}>
-        <SideBar>{children}</SideBar>
-      </body>
+      <body className={inter.className}>{children}</body>
     </html>
   );
 }

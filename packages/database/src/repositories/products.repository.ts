@@ -34,10 +34,34 @@ export class ProductsRepository implements IProductsRepository {
   }
 
   async get(
+    userId: string,
     query: GetProductsRequest,
   ): Promise<PaginatedResponse<ProductEntity>> {
-    console.log("query", query);
-    return null;
+    const pageSize = query.pageSize ?? 10;
+    const page = query.page ?? 1;
+    const [results, count] = await db.product.findManyAndCount({
+      take: pageSize ?? 10,
+      skip: (page - 1) * pageSize,
+      orderBy: {
+        createdAt: "desc",
+      },
+    });
+    return {
+      items: results.map((dbProduct) => ({
+        id: dbProduct.id,
+        createdAt: dbProduct.createdAt,
+        updatedAt: dbProduct.updatedAt,
+        userId: userId,
+        title: dbProduct.title,
+        description: dbProduct.description,
+        price: dbProduct.price.toNumber(),
+        category: dbProduct.category as ProductCategory,
+      })),
+      totalItems: await db.product.count(),
+      currentPage: query.page,
+      itemCount: results.length,
+      totalPages: Math.ceil(count / query.pageSize),
+    };
   }
 
   async getById(id: string): Promise<ProductEntity> {

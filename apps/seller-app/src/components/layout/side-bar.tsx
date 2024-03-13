@@ -30,7 +30,9 @@ const Content = () => {
   return (
     <>
       <div className="flex justify-center pt-4">
-        <h1 className="text-black text-5xl">ACME</h1>
+        <Link href="/">
+          <h1 className="text-black text-5xl">ACME</h1>
+        </Link>
       </div>
       <Link href="/products">
         <div className="flex items-center justify-center gap-2 text-black mt-4 p-4 hover:bg-slate-200">

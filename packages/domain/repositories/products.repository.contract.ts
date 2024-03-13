@@ -8,7 +8,10 @@ export interface IProductsRepository {
     userId: string,
     product: CreateProductRequest,
   ) => Promise<ProductEntity>;
-  get: (query: GetProductsRequest) => Promise<PaginatedResponse<ProductEntity>>;
+  get: (
+    userId: string,
+    query: GetProductsRequest,
+  ) => Promise<PaginatedResponse<ProductEntity>>;
   getById: (id: string) => Promise<ProductEntity>;
   delete: (id: string) => Promise<boolean>;
 }
