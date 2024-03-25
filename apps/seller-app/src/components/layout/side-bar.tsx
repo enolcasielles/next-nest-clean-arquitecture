@@ -1,6 +1,6 @@
 "use client";
 
-import { Box, Menu, ShoppingCart } from "lucide-react";
+import { Box, Menu, LogOut } from "lucide-react";
 import Link from "next/link";
 import { Sheet, SheetTrigger, SheetContent } from "../ui/sheet";
 import { PropsWithChildren } from "react";
@@ -40,10 +40,10 @@ const Content = () => {
           <span>Mis Productos</span>
         </div>
       </Link>
-      <Link href="/products">
+      <Link href="/logout">
         <div className="flex items-center justify-center gap-2 text-black p-4 hover:bg-slate-200">
-          <ShoppingCart />
-          <span>Mis Pedidos</span>
+          <LogOut />
+          <span>Cerrar sesión</span>
         </div>
       </Link>
     </>

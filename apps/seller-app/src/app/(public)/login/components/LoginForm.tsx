@@ -21,6 +21,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
+import { login } from "../actions/login.action";
 
 const formSchema = z.object({
   email: z
@@ -46,7 +47,10 @@ export default function LoginForm() {
   const action: () => void = form.handleSubmit(async (data) => {
     try {
       setLoading(true);
-      //await createProduct(data);
+      await login({
+        email: data.email,
+        password: data.password,
+      });
     } catch (e: any) {
       setError(true);
     } finally {
@@ -95,7 +99,7 @@ export default function LoginForm() {
               </Button>
               {error && (
                 <p className="text-red-500">
-                  Se ha producido un error al crear el producto
+                  Ups...No se ha podido iniciar sesión
                 </p>
               )}
             </div>

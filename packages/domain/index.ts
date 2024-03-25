@@ -11,3 +11,5 @@ export * from "./requests/get-paginated.request";
 export * from "./responses/paginated.response";
 
 export * from "./errors/index";
+
+export * from "./enums/roles.enum";

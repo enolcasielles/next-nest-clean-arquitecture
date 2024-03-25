@@ -1,18 +1,12 @@
-import { GetProductsUseCase } from "@application";
 import { isLeft } from "@domain";
 import { DataTable } from "@/components/ui/data-table";
-import { DI } from "@/di";
 import { ProductsTableColumns } from "./components/ProductsTableColumns";
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
+import { getProducts } from "./actions/get-products.action";
 
 async function Page() {
-  const response = await new GetProductsUseCase().execute(
-    {
-      productsRepository: DI.productsRepository,
-    },
-    { userId: "1", query: {} },
-  );
+  const response = await getProducts();
 
   if (isLeft(response)) {
     return <div>Error: {response.left.errors}</div>;
