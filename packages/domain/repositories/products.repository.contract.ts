@@ -8,6 +8,9 @@ export interface IProductsRepository {
     userId: string,
     product: CreateProductRequest,
   ) => Promise<ProductEntity>;
+  getAll: (
+    query: GetProductsRequest,
+  ) => Promise<PaginatedResponse<ProductEntity>>;
   get: (
     userId: string,
     query: GetProductsRequest,

@@ -14,20 +14,29 @@ datasource db {
 }
 
 model User {
-  id        Int      @id @default(autoincrement())
-  email     String   @unique
+  id        Int       @id @default(autoincrement())
+  email     String    @unique
+  role      UserRole  @default(USER)
   name      String
   password  String
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  products  Product[]
+}
+
+enum UserRole {
+  USER
+  ADMIN
 }
 
 model Product {
   id          Int             @id @default(autoincrement())
+  userId      Int
+  user        User            @relation(fields: [userId], references: [id])
   title       String
-  price       Decimal         @db.Decimal(9,2)
+  price       Decimal         @db.Decimal(9, 2)
   description String
-  category    ProductCategory 
+  category    ProductCategory
   createdAt   DateTime        @default(now())
   updatedAt   DateTime        @updatedAt
 }

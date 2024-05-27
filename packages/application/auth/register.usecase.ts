@@ -1,19 +1,15 @@
-import {
-  CustomError,
-  Either,
-  IUsersRepository,
-  UserEntity,
-  makeLeft,
-  makeRight,
-} from "@domain";
+import { CustomError, IUsersRepository, Role, UserEntity } from "@domain";
 import { UseCase } from "../core/usecase";
 import { z } from "zod";
 import { validateSchema } from "../core/validate-schema";
 import { IPasswordsService } from "./services/passwords/passwords.service.contract";
 import { PasswordsService } from "./services/passwords/passwords.service";
+import { IJwtService } from "./services/jwt/jwt.service.contract";
+import { JwtService } from "./services/jwt/jwt.service";
 
 interface Context {
   usersRepository: IUsersRepository;
+  jwtService?: IJwtService;
   passwordService?: IPasswordsService;
 }
 
@@ -25,41 +21,30 @@ interface Request {
 
 interface Response {
   user: UserEntity;
+  token: string;
 }
 
-export class RegisterUserUseCase
-  implements UseCase<Request, Context, Response>
-{
-  async execute(
-    context: Context,
-    request: Request,
-  ): Promise<Either<CustomError, Response>> {
-    const _passwordService = context.passwordService ?? new PasswordsService();
-    try {
-      const validationError = this.validate(request);
-      if (validationError !== null) {
-        return makeLeft(validationError);
-      }
-      const user = await context.usersRepository.createUser(
-        request.email,
-        request.name,
-        await _passwordService.hash(request.password),
-      );
-      return makeRight({
-        user,
-      });
-    } catch (error) {
-      console.log(error);
-      if (error instanceof CustomError) {
-        return makeLeft(error);
-      }
-      const genericError = new CustomError("GENERIC_ERROR");
-      genericError.setPayload(error);
-      return makeLeft(genericError);
-    }
+export class RegisterUserUseCase extends UseCase<Request, Context, Response> {
+  constructor(context: Context) {
+    super(context);
   }
 
-  private validate(data: Request): CustomError {
+  protected async run(request: Request): Promise<Response> {
+    const _jwtService = this.context.jwtService ?? new JwtService();
+    const _passwordService =
+      this.context.passwordService ?? new PasswordsService();
+    const user = await this.context.usersRepository.createUser(
+      request.email,
+      request.name,
+      await _passwordService.hash(request.password),
+    );
+    return {
+      user,
+      token: _jwtService.generate(Role.User, user.id),
+    };
+  }
+
+  protected validate(data: Request): CustomError {
     const schema = z.object({
       email: z.string().email(),
       name: z.string(),

@@ -1,4 +1,4 @@
-import { CustomError, Either, makeLeft, makeRight } from "@domain";
+import { CustomError, Role } from "@domain";
 import { UseCase } from "../core/usecase";
 import { JwtService } from "./services/jwt/jwt.service";
 import { IJwtService } from "./services/jwt/jwt.service.contract";
@@ -13,26 +13,21 @@ interface Request {
 
 interface Response {
   userId: string;
+  role: Role;
 }
 
-export class ResolveTokenUseCase
-  implements UseCase<Request, Context, Response>
-{
-  async execute(
-    context: Context,
-    request: Request,
-  ): Promise<Either<CustomError, Response>> {
-    const _jwtService = context?.jwtService ?? new JwtService();
-    try {
-      const userId = _jwtService.parse(request.token);
-      return makeRight({ userId });
-    } catch (error) {
-      if (error instanceof CustomError) {
-        return makeLeft(error);
-      }
-      const genericError = new CustomError("GENERIC_ERROR");
-      genericError.setPayload(error);
-      return makeLeft(genericError);
-    }
+export class ResolveTokenUseCase extends UseCase<Request, Context, Response> {
+  constructor(context: Context) {
+    super(context);
+  }
+
+  protected async run(request: Request): Promise<Response> {
+    const _jwtService = this.context?.jwtService ?? new JwtService();
+    const { userId, role } = _jwtService.parse(request.token);
+    return { userId, role };
+  }
+
+  protected validate(): CustomError {
+    return null;
   }
 }

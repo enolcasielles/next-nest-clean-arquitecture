@@ -1,11 +1,14 @@
 import * as jwt from "jsonwebtoken";
-import { IJwtService } from "./jwt.service.contract";
+
 import { Role } from "@domain";
 
-const SECRET_KEY = "dkfjdksfsa";
+import { IJwtService } from "./jwt.service.contract";
+
+// TODO(enol): Llevar a una varible de entorno
+const SECRET_KEY = "3420343efgh4583409fgheas340";
 
 export class JwtService implements IJwtService {
-  generate(role: Role, userId: number) {
+  generate(role: Role, userId: string) {
     return jwt.sign({ userId, role }, SECRET_KEY, {
       algorithm: "HS256",
     });

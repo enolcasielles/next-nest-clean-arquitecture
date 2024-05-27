@@ -3,12 +3,9 @@ import {
   type IProductsRepository,
   type CreateProductRequest,
   type ProductEntity,
-  type Either,
-  makeLeft,
-  makeRight,
   CustomError,
 } from "@domain";
-import { type UseCase } from "../core/usecase";
+import { UseCase } from "../core/usecase";
 import { validateSchema } from "../core/validate-schema";
 
 interface Context {
@@ -20,40 +17,35 @@ interface Request {
   product: CreateProductRequest;
 }
 
-export class CreateProductUseCase
-  implements UseCase<Request, Context, ProductEntity>
-{
-  async execute(
-    context: Context,
-    request: Request,
-  ): Promise<Either<CustomError, ProductEntity>> {
-    try {
-      const validationError = this.validate(request.product);
-      if (validationError !== null) {
-        return makeLeft(validationError);
-      }
-      const product = await context.productsRepository.create(
-        request.userId,
-        request.product,
-      );
-      return makeRight(product);
-    } catch (error) {
-      if (error instanceof CustomError) {
-        return makeLeft(error);
-      }
-      const genericError = new CustomError("GENERIC_ERROR");
-      genericError.setPayload(error);
-      return makeLeft(genericError);
-    }
+export class CreateProductUseCase extends UseCase<
+  Request,
+  Context,
+  ProductEntity
+> {
+  constructor(context: Context) {
+    super(context);
   }
 
-  private validate(product: CreateProductRequest): CustomError {
+  protected async run(request: Request): Promise<ProductEntity> {
+    const product = await this.context.productsRepository.create(
+      request.userId,
+      request.product,
+    );
+    return product;
+  }
+
+  protected validate(request: Request): CustomError {
     const schema = z.object({
-      title: z.string(),
-      price: z.number(),
-      description: z.string(),
-      category: z.string(),
+      userId: z.string(),
+      product: z.object({
+        title: z.string(),
+        price: z.number(),
+        description: z
+          .string()
+          .max(50, "La descripción no puede tener más de 50 caracteres"),
+        category: z.string(),
+      }),
     });
-    return validateSchema(schema, product);
+    return validateSchema(schema, request);
   }
 }

@@ -1,16 +1,18 @@
-import { type ProductEntity } from "../../domain/entities/product.entity";
 import {
-  type Either,
+  CommonErrors,
   CustomError,
-  makeLeft,
-  makeRight,
-} from "../../domain/errors";
-import { type IProductsRepository } from "../../domain/repositories/products.repository.contract";
-import { type GetProductsRequest } from "../../domain/requests/get-products.request";
-import { type PaginatedResponse } from "@domain";
-import { type UseCase } from "../core/usecase";
+  GetProductsRequest,
+  IProductsRepository,
+  IUsersRepository,
+  ProductEntity,
+  Role,
+  buildCommonError,
+  type PaginatedResponse,
+} from "@domain";
+import { UseCase } from "../core/usecase";
 
 interface Context {
+  usersRepository: IUsersRepository;
   productsRepository: IProductsRepository;
 }
 
@@ -19,27 +21,32 @@ interface Request {
   query: GetProductsRequest;
 }
 
-export class GetProductsUseCase
-  implements UseCase<Request, Context, PaginatedResponse<ProductEntity>>
-{
-  async execute(
-    context: Context,
+export class GetProductsUseCase extends UseCase<
+  Request,
+  Context,
+  PaginatedResponse<ProductEntity>
+> {
+  constructor(context: Context) {
+    super(context);
+  }
+
+  protected async run(
     request: Request,
-  ): Promise<Either<CustomError, PaginatedResponse<ProductEntity>>> {
-    try {
-      const products = await context.productsRepository.get(
-        request.userId,
-        request.query,
-      );
-      return makeRight(products);
-    } catch (error) {
-      console.log("error", error);
-      if (error instanceof CustomError) {
-        return makeLeft(error);
-      }
-      const genericError = new CustomError("GENERIC_ERROR");
-      genericError.setPayload(error);
-      return makeLeft(genericError);
+  ): Promise<PaginatedResponse<ProductEntity>> {
+    const user = await this.context.usersRepository.getById(request.userId);
+    if (!user) {
+      throw buildCommonError(CommonErrors.USER_NOT_FOUND, 404);
     }
+    if (user.role === Role.Admin) {
+      return await this.context.productsRepository.getAll(request.query);
+    }
+    return await this.context.productsRepository.get(
+      request.userId,
+      request.query,
+    );
+  }
+
+  protected validate(): CustomError {
+    return null;
   }
 }
