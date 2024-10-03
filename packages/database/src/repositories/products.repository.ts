@@ -4,6 +4,7 @@ import {
   type GetProductsRequest,
   type IProductsRepository,
   type ProductEntity,
+  type UpdateProductRequest,
 } from "@domain";
 import db from "../db";
 import { productDbToEntity } from "../mappers/products.mappers";
@@ -91,5 +92,23 @@ export class ProductsRepository implements IProductsRepository {
       },
     });
     return true;
+  }
+
+  async update(
+    productId: string,
+    productRequest: UpdateProductRequest,
+  ): Promise<ProductEntity> {
+    const dbProduct = await db.product.update({
+      where: {
+        id: parseInt(productId),
+      },
+      data: {
+        title: productRequest.title,
+        description: productRequest.description,
+        price: productRequest.price.toString(),
+        category: productRequest.category,
+      },
+    });
+    return productDbToEntity(dbProduct);
   }
 }

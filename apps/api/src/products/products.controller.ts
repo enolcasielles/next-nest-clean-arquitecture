@@ -2,6 +2,7 @@ import {
   Controller,
   Get,
   Post,
+  Put,
   Body,
   Headers,
   Query,
@@ -14,6 +15,7 @@ import {
   GetProductsRequest,
   PaginatedResponse,
   Role,
+  UpdateProductRequest,
 } from '@domain';
 
 import { Roles } from '@/auth/roles.decorator';
@@ -62,5 +64,20 @@ export class ProductsController {
   ): Promise<BasicResponse> {
     await this.productsService.deleteProduct(userId, productId);
     return BasicResponse.success();
+  }
+
+  @Put(':productId')
+  @Roles([Role.User, Role.Admin])
+  async updateProduct(
+    @Headers('user-id') userId: string,
+    @Param('productId') productId: string,
+    @Body() updateProductRequest: UpdateProductRequest,
+  ): Promise<ProductResponse> {
+    const product = await this.productsService.updateProduct(
+      userId,
+      productId,
+      updateProductRequest,
+    );
+    return ProductResponse.fromProductEntity(product);
   }
 }

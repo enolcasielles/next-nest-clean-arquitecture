@@ -4,6 +4,7 @@ import {
   CreateProductUseCase,
   DeleteProductUseCase,
   GetProductsUseCase,
+  UpdateProductUseCase,
 } from '@application';
 
 import { DI } from '@/core/di/di';
@@ -33,6 +34,14 @@ import { ProductsController } from './products.controller';
       provide: DeleteProductUseCase,
       useFactory: () =>
         new DeleteProductUseCase({
+          productsRepository: DI.productsRepository,
+          usersRepository: DI.usersRepository,
+        }),
+    },
+    {
+      provide: UpdateProductUseCase,
+      useFactory: () =>
+        new UpdateProductUseCase({
           productsRepository: DI.productsRepository,
           usersRepository: DI.usersRepository,
         }),
