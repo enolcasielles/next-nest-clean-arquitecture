@@ -7,6 +7,7 @@ export * from "./entities/user.entity";
 export * from "./requests/create-product.request";
 export * from "./requests/get-products.request";
 export * from "./requests/get-paginated.request";
+export * from "./requests/update-product.request";
 
 export * from "./responses/paginated.response";
 
