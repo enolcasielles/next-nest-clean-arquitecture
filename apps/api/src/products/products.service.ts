@@ -4,11 +4,13 @@ import {
   CreateProductUseCase,
   DeleteProductUseCase,
   GetProductsUseCase,
+  UpdateProductUseCase,
 } from '@application';
 import {
   CreateProductRequest,
   GetProductsRequest,
   ProductEntity,
+  UpdateProductRequest,
 } from '@domain';
 
 @Injectable()
@@ -17,6 +19,7 @@ export class ProductsService {
     private createProductUseCase: CreateProductUseCase,
     private getProductsUseCase: GetProductsUseCase,
     private deleteProductUseCase: DeleteProductUseCase,
+    private updateProductUseCase: UpdateProductUseCase,
   ) {}
 
   async create(
@@ -43,5 +46,18 @@ export class ProductsService {
       userId,
       productId,
     });
+  }
+
+  async updateProduct(
+    userId: string,
+    productId: string,
+    updateProductDto: UpdateProductRequest,
+  ): Promise<ProductEntity> {
+    const response = await this.updateProductUseCase.execute({
+      userId,
+      productId,
+      product: updateProductDto,
+    });
+    return response;
   }
 }
