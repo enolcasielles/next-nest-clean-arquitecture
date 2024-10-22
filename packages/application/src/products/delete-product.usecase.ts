@@ -38,7 +38,7 @@ export class DeleteProductUseCase extends UseCase<Request, Context, null> {
       throw buildCommonError(CommonErrors.UNAUTHORIZED, 403);
     }
     await this.context.productsRepository.delete(request.productId);
-    return;
+    return null;
   }
 
   protected validate(): CustomError {
