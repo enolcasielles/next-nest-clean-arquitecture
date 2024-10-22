@@ -1,4 +1,8 @@
-import { Role, type IUsersRepository, type UserEntity } from "@domain";
+import {
+  Role,
+  type IUsersRepository,
+  type UserEntity,
+} from "@marketplace/domain";
 import db from "../db";
 import { userDbToEntity } from "../mappers/users.mappers";
 

@@ -1,4 +1,4 @@
-import { CommonErrors, CustomError } from "@domain";
+import { CommonErrors, CustomError } from "@marketplace/domain";
 import { type ZodObject, type ZodError } from "zod";
 
 export const validateSchema = (

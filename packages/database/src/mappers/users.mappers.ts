@@ -1,4 +1,4 @@
-import { Role, UserEntity } from "@domain";
+import { Role, UserEntity } from "@marketplace/domain";
 import { User } from "@prisma/client";
 
 export const userDbToEntity = (dbUser: User): UserEntity => {

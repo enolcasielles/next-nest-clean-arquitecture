@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 
-import { LoginUseCase, RegisterUserUseCase } from '@application';
+import { LoginUseCase, RegisterUserUseCase } from '@marketplace/application';
 
 import { LoginRequest } from './requests/login.request';
 import { AuthResponse } from './responses/auth.response';

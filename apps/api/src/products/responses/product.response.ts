@@ -1,4 +1,4 @@
-import { ProductCategory, ProductEntity } from '@domain';
+import { ProductCategory, ProductEntity } from '@marketplace/domain';
 
 export class ProductResponse {
   title: string;

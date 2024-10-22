@@ -8,7 +8,7 @@ import {
   buildCommonError,
   IUsersRepository,
   Role,
-} from "@domain";
+} from "@marketplace/domain";
 import { UseCase } from "../core/usecase";
 import { validateSchema } from "../core/validate-schema";
 

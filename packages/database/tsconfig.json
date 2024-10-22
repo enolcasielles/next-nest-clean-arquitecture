@@ -2,9 +2,6 @@
   "extends": "../../tsconfig.json",
   "compilerOptions": {
     "lib": ["ES2020", "dom"],
-    "skipLibCheck": true,
-    "paths": {
-      "@domain": ["../domain"]
-    }
+    "skipLibCheck": true
   }
 }

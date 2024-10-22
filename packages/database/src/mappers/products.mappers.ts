@@ -1,4 +1,4 @@
-import { ProductCategory, ProductEntity } from "@domain";
+import { ProductCategory, ProductEntity } from "@marketplace/domain";
 import { Product } from "@prisma/client";
 
 export const productDbToEntity = (dbProduct: Product): ProductEntity => {

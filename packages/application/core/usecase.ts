@@ -1,4 +1,8 @@
-import { CommonErrors, CustomError, buildCommonError } from "@domain";
+import {
+  CommonErrors,
+  CustomError,
+  buildCommonError,
+} from "@marketplace/domain";
 
 export abstract class UseCase<TRequest, TContext, TResponse> {
   constructor(protected context: TContext) {}

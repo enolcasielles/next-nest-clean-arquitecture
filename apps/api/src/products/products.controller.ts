@@ -16,7 +16,7 @@ import {
   PaginatedResponse,
   Role,
   UpdateProductRequest,
-} from '@domain';
+} from '@marketplace/domain';
 
 import { Roles } from '@/auth/roles.decorator';
 import { BasicResponse } from '@/core/responses/basic.response';

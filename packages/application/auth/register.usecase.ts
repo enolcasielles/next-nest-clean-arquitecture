@@ -1,4 +1,9 @@
-import { CustomError, IUsersRepository, Role, UserEntity } from "@domain";
+import {
+  CustomError,
+  IUsersRepository,
+  Role,
+  UserEntity,
+} from "@marketplace/domain";
 import { UseCase } from "../core/usecase";
 import { z } from "zod";
 import { validateSchema } from "../core/validate-schema";

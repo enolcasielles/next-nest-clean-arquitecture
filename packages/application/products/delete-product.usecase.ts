@@ -5,7 +5,7 @@ import {
   buildCommonError,
   IUsersRepository,
   Role,
-} from "@domain";
+} from "@marketplace/domain";
 import { UseCase } from "../core/usecase";
 
 interface Request {

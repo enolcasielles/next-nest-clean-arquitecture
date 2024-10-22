@@ -1,5 +1,4 @@
 {
-  "extends": "../../tsconfig.json",
   "compilerOptions": {
     "module": "commonjs",
     "declaration": true,
@@ -14,17 +13,13 @@
     "incremental": true,
     "skipLibCheck": true,
     "strict": true,
+    "strictNullChecks": false,
     "noImplicitAny": false,
-    "strictBindCallApply": true,
-    "forceConsistentCasingInFileNames": true,
-    "noFallthroughCasesInSwitch": true,
+    "strictBindCallApply": false,
+    "forceConsistentCasingInFileNames": false,
+    "noFallthroughCasesInSwitch": false,
     "paths": {
-      "@/*": ["./src/*"],
-      "@domain": ["../../packages/domain"],
-      "@application": ["../../packages/application"],
-      "@database": ["../../packages/database/src"]
+      "@/*": ["src/*"]
     }
-  },
-  "include": ["src/**/*.ts"],
-  "exclude": ["node_modules", "dist"]
+  }
 }

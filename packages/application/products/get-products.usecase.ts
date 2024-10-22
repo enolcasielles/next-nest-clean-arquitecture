@@ -8,7 +8,7 @@ import {
   Role,
   buildCommonError,
   type PaginatedResponse,
-} from "@domain";
+} from "@marketplace/domain";
 import { UseCase } from "../core/usecase";
 
 interface Context {

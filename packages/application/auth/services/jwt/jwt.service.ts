@@ -1,6 +1,6 @@
 import * as jwt from "jsonwebtoken";
 
-import { Role } from "@domain";
+import { Role } from "@marketplace/domain";
 
 import { IJwtService } from "./jwt.service.contract";
 

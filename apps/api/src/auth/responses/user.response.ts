@@ -1,4 +1,4 @@
-import { Role, UserEntity } from '@domain';
+import { Role, UserEntity } from '@marketplace/domain';
 
 export class UserResponse {
   email: string;

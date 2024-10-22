@@ -6,7 +6,7 @@ import {
   HttpException,
 } from '@nestjs/common';
 
-import { CustomError } from '@domain';
+import { CustomError } from '@marketplace/domain';
 
 import { BasicResponse } from './core/responses/basic.response';
 

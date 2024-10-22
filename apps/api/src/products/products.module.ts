@@ -5,7 +5,7 @@ import {
   DeleteProductUseCase,
   GetProductsUseCase,
   UpdateProductUseCase,
-} from '@application';
+} from '@marketplace/application';
 
 import { DI } from '@/core/di/di';
 import { ProductsService } from './products.service';

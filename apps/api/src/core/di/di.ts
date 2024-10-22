@@ -1,4 +1,4 @@
-import { ProductsRepository, UsersRepository } from '@database';
+import { ProductsRepository, UsersRepository } from '@marketplace/database';
 
 export const DI = {
   usersRepository: new UsersRepository(),

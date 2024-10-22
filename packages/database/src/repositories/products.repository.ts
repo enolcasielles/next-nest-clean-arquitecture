@@ -5,7 +5,7 @@ import {
   type IProductsRepository,
   type ProductEntity,
   type UpdateProductRequest,
-} from "@domain";
+} from "@marketplace/domain";
 import db from "../db";
 import { productDbToEntity } from "../mappers/products.mappers";
 

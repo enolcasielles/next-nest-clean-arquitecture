@@ -5,13 +5,13 @@ import {
   DeleteProductUseCase,
   GetProductsUseCase,
   UpdateProductUseCase,
-} from '@application';
+} from '@marketplace/application';
 import {
   CreateProductRequest,
   GetProductsRequest,
   ProductEntity,
   UpdateProductRequest,
-} from '@domain';
+} from '@marketplace/domain';
 
 @Injectable()
 export class ProductsService {

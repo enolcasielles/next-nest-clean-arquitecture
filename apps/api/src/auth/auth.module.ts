@@ -4,7 +4,7 @@ import {
   LoginUseCase,
   RegisterUserUseCase,
   ResolveTokenUseCase,
-} from '@application';
+} from '@marketplace/application';
 
 import { DI } from '@/core/di/di';
 import { AuthController } from './auth.controller';

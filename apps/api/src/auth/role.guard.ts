@@ -1,8 +1,8 @@
 import { Injectable, CanActivate, ExecutionContext } from '@nestjs/common';
 import { Reflector } from '@nestjs/core';
 
-import { ResolveTokenUseCase } from '@application';
-import { Role } from '@domain';
+import { ResolveTokenUseCase } from '@marketplace/application';
+import { Role } from '@marketplace/domain';
 
 import { ROLE_KEY } from './roles.decorator';
 

@@ -4,7 +4,7 @@ import {
   type CreateProductRequest,
   type ProductEntity,
   CustomError,
-} from "@domain";
+} from "@marketplace/domain";
 import { UseCase } from "../core/usecase";
 import { validateSchema } from "../core/validate-schema";
 

@@ -1,8 +1,8 @@
 {
-  "name": "database",
+  "name": "@marketplace/database",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "src/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "ts-node src/db.ts"
@@ -11,6 +11,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@marketplace/domain": "workspace:^",
     "@prisma/client": "5.10.2",
     "ts-node": "^10.9.2"
   },

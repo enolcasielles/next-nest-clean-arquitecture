@@ -1,4 +1,4 @@
-import { CustomError, Role } from "@domain";
+import { CustomError, Role } from "@marketplace/domain";
 import { UseCase } from "../core/usecase";
 import { JwtService } from "./services/jwt/jwt.service";
 import { IJwtService } from "./services/jwt/jwt.service.contract";

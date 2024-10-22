@@ -1,6 +1,6 @@
 import { NestFactory, Reflector } from '@nestjs/core';
 
-import { ResolveTokenUseCase } from '@application';
+import { ResolveTokenUseCase } from '@marketplace/application';
 
 import { AppModule } from './app.module';
 import { RolesGuard } from './auth/role.guard';
@@ -14,5 +14,7 @@ async function bootstrap() {
   app.useGlobalFilters(new ErrorFilter());
   await app.listen(3002);
 }
+
+console.log('Starting API server...');
 
 bootstrap();
