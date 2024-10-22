@@ -1,19 +1,16 @@
-import { z } from "zod";
-
 import {
-  CommonErrors,
   CustomError,
   IUsersRepository,
+  Role,
   UserEntity,
-  buildCommonError,
 } from "@marketplace/domain";
-
-import { UseCase } from "../core/usecase";
-import { validateSchema } from "../core/validate-schema";
+import { z } from "zod";
 import { IPasswordsService } from "./services/passwords/passwords.service.contract";
+import { PasswordsService } from "./services/passwords/passwords.service";
 import { IJwtService } from "./services/jwt/jwt.service.contract";
 import { JwtService } from "./services/jwt/jwt.service";
-import { PasswordsService } from "./services/passwords/passwords.service";
+import { UseCase } from "../core/usecase";
+import { validateSchema } from "../core/validate-schema";
 
 interface Context {
   usersRepository: IUsersRepository;
@@ -23,6 +20,7 @@ interface Context {
 
 interface Request {
   email: string;
+  name: string;
   password: string;
 }
 
@@ -31,7 +29,7 @@ interface Response {
   token: string;
 }
 
-export class LoginUseCase extends UseCase<Request, Context, Response> {
+export class RegisterUserUseCase extends UseCase<Request, Context, Response> {
   constructor(context: Context) {
     super(context);
   }
@@ -40,26 +38,21 @@ export class LoginUseCase extends UseCase<Request, Context, Response> {
     const _jwtService = this.context.jwtService ?? new JwtService();
     const _passwordService =
       this.context.passwordService ?? new PasswordsService();
-    const user = await this.context.usersRepository.getByEmail(request.email);
-    if (user === null) {
-      throw buildCommonError(CommonErrors.USER_NOT_FOUND, 404);
-    }
-    const validPassword = await _passwordService.verifyHash(
-      user.password,
-      request.password,
+    const user = await this.context.usersRepository.createUser(
+      request.email,
+      request.name,
+      await _passwordService.hash(request.password),
     );
-    if (!validPassword) {
-      throw buildCommonError(CommonErrors.USER_NOT_FOUND, 404);
-    }
     return {
       user,
-      token: _jwtService.generate(user.role, user.id),
+      token: _jwtService.generate(Role.User, user.id),
     };
   }
 
   protected validate(data: Request): CustomError {
     const schema = z.object({
       email: z.string().email(),
+      name: z.string(),
       password: z.string().min(4),
     });
     return validateSchema(schema, data);
