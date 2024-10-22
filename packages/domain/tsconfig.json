@@ -1,11 +1,3 @@
 {
-  "extends": "./tsconfig.base.json",
-  "compilerOptions": {
-    "module": "commonjs",
-    "outDir": "./dist/cjs",
-    "declaration": true,
-    "declarationMap": false,
-    "sourceMap": false
-  },
-  "exclude": ["../src/**/__tests__", "../playground.ts"]
+  "extends": "../../configs/library/tsconfig.base.json"
 }
