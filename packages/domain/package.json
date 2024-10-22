@@ -2,13 +2,17 @@
   "name": "@marketplace/domain",
   "version": "1.0.0",
   "description": "",
-  "type": "commonjs",
+  "type": "module",
   "main": "dist/index.js",
   "scripts": {
+		"clean": "rimraf dist",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "tsc -w"
+    "dev": "npm run clean && tsc -w"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+		"rimraf": "^5.0.7"
+  }
 }

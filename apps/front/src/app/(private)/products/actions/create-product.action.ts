@@ -3,7 +3,7 @@
 import { revalidatePath } from "next/cache";
 import { redirect } from "next/navigation";
 
-import { CreateProductUseCase } from "@application";
+import { CreateProductUseCase } from "@marketplace/application";
 
 import { DI } from "@/di";
 import getUserId from "@/app/utils/get-user-id";

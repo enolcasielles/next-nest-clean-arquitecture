@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-import { CustomError } from "@domain";
+import { CustomError } from "@marketplace/domain";
 
 import { Button } from "@/components/ui/button";
 import { deleteProductAction } from "../actions/delete-product.action";

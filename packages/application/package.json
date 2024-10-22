@@ -2,10 +2,15 @@
   "name": "@marketplace/application",
   "version": "1.0.0",
   "description": "",
-  "main": "dist/index.js",
+  "main": "dist/index.cjs.js",
+  "module": "dist/index.esm.js",
   "scripts": {
+		"clean": "rimraf dist",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "tsc -w"
+    "dev": "npm run clean && tsc -w",
+    "build:esm": "tsc --outDir dist/esm --module ESNext",
+    "build:cjs": "tsc --outDir dist/cjs --module CommonJS --moduleResolution NodeNext",
+    "build": "npm run clean && npm run build:esm && npm run build:cjs"
   },
   "dependencies": {
     "@marketplace/domain": "workspace:^",
@@ -20,6 +25,7 @@
   "devDependencies": {
     "@types/bcrypt": "^5.0.2",
     "@types/bcryptjs": "^2.4.6",
-    "@types/jsonwebtoken": "^9.0.6"
+    "@types/jsonwebtoken": "^9.0.6",
+		"rimraf": "^5.0.7"
   }
 }

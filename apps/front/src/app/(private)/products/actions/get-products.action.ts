@@ -1,4 +1,4 @@
-import { GetProductsUseCase } from "@application";
+import { GetProductsUseCase } from "@marketplace/application";
 
 import { DI } from "@/di";
 import getUserId from "@/app/utils/get-user-id";

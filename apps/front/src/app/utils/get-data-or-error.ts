@@ -1,4 +1,4 @@
-import { CommonErrors, CustomError, buildCommonError } from "@domain";
+import { CommonErrors, CustomError, buildCommonError } from "@marketplace/domain";
 
 export const getDataOrError = async <T>(
   fetcher: Promise<any>,

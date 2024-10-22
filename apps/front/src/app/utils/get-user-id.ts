@@ -1,6 +1,6 @@
 import { cookies } from "next/headers";
 
-import { ResolveTokenUseCase } from "@application";
+import { ResolveTokenUseCase } from "@marketplace/application";
 
 export default async function getUserId() {
   const cookiesStore = cookies();

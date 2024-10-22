@@ -4,7 +4,7 @@ import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import { revalidatePath } from "next/cache";
 
-import { LoginUseCase } from "@application";
+import { LoginUseCase } from "@marketplace/application";
 
 import { DI } from "@/di";
 import handleActionsError from "@/app/utils/handle-actions-error";

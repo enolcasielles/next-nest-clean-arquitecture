@@ -11,11 +11,11 @@ import {
 } from '@nestjs/common';
 
 import {
-  CreateProductRequest,
-  GetProductsRequest,
+  type CreateProductRequest,
+  type GetProductsRequest,
   PaginatedResponse,
   Role,
-  UpdateProductRequest,
+  type UpdateProductRequest,
 } from '@marketplace/domain';
 
 import { Roles } from '@/auth/roles.decorator';

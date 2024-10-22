@@ -5,7 +5,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 
-import { CustomError } from "@domain";
+import { CustomError } from "@marketplace/domain";
 
 import {
   Form,

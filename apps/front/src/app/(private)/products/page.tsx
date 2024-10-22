@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-import { CustomError, PaginatedResponse, ProductEntity } from "@domain";
+import { CustomError, PaginatedResponse, ProductEntity } from "@marketplace/domain";
 
 import { DataTable } from "@/components/ui/data-table";
 import { Button } from "@/components/ui/button";

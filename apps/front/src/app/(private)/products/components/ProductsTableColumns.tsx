@@ -2,7 +2,7 @@
 
 import { type ColumnDef } from "@tanstack/react-table";
 
-import { type ProductEntity } from "@domain";
+import { type ProductEntity } from "@marketplace/domain";
 
 import DeleteButton from "./DeleteButton";
 
